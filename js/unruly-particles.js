@@ -55,17 +55,6 @@
 	}
 	
 	function animate(t) {
-		// var time = Date.now() * 0.0001;
-		// for ( i = 0; i < scene.children.length; i ++ ) {
-		// 	var object = scene.children[ i ];
-		// 	if ( object instanceof THREE.PointCloud || object instanceof THREE.Line) {
-		// 		object.rotation.y = time * ( i < 4 ? i + 1 : - ( i + 1 ) );
-		// 	}
-		// }
-
-		// camera.position.x += ( mouseX - camera.position.x ) * 0.05;
-		// camera.position.y += ( - mouseY - camera.position.y ) * 0.05;
-
 		camera.position.x = Math.sin(t/5000)*mouseX;
         camera.position.y = mouseY;
         camera.position.z = Math.cos(t/5000)*300;
