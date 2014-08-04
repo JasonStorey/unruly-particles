@@ -72,7 +72,7 @@
 		camera.lookAt( scene.position );
 
 		renderer.render( scene, camera );
-		global.requestAnimationFrame(animate);
+		global.requestAnimationFrame(animate, renderer.domElement);
 	}
 	
 	initParticles();
