@@ -16,7 +16,7 @@
 	camera.position.z = 1000;
 	
 	document.body.appendChild(renderer.domElement);
-	// document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+	document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 	
 	function onDocumentMouseMove( event ) {
 		mouseX = event.clientX - windowHalfX;
@@ -54,20 +54,21 @@
 		camera.position.z = 50;
 	}
 	
-	function animate() {
-		var time = Date.now() * 0.0001;
+	function animate(t) {
+		// var time = Date.now() * 0.0001;
 		// for ( i = 0; i < scene.children.length; i ++ ) {
 		// 	var object = scene.children[ i ];
 		// 	if ( object instanceof THREE.PointCloud || object instanceof THREE.Line) {
 		// 		object.rotation.y = time * ( i < 4 ? i + 1 : - ( i + 1 ) );
 		// 	}
 		// }
-		
-		mouseX = Math.sin(time) * 1000;
-		
-		mouseY = Math.sin(time) * 700;
-		camera.position.x += ( mouseX - camera.position.x ) * 0.05;
-		camera.position.y += ( - mouseY - camera.position.y ) * 0.05;
+
+		// camera.position.x += ( mouseX - camera.position.x ) * 0.05;
+		// camera.position.y += ( - mouseY - camera.position.y ) * 0.05;
+
+		camera.position.x = Math.sin(t/5000)*mouseX;
+        camera.position.y = mouseY;
+        camera.position.z = Math.cos(t/5000)*300;
 		camera.lookAt( scene.position );
 
 		renderer.render( scene, camera );
@@ -75,6 +76,6 @@
 	}
 	
 	initParticles();
-	animate();
+	animate(new Date().getTime());
 
 }(window, THREE))
